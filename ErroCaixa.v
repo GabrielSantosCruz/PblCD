@@ -1,8 +1,10 @@
 module ErroCaixa(
-	input Low, Mid, High,
-	output ErroMedida
+	input Low, Mid, High, Temp, Usolo, Uar
+	output ErroMedida, Aspersor, Gotejamento, VEntrada, Alarme
 );
 	
+	// Sistema de erro
+	//=================================================
 	wire Low_inv, Mid_inv, High_inv, NotAB, NotBC;
 	
 	// Inversao:
@@ -12,7 +14,6 @@ module ErroCaixa(
 	// Portas AND:
 	and UI3(NotAB, Low_inv, Mid);
 	and UI4(NotBC, Mid_inv, High);
-	
 	or UI5(ErroMedida, NotBC, NotAB);
-	
+	//=================================================
 endmodule
